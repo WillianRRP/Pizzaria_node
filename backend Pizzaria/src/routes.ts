@@ -1,11 +1,12 @@
 import { Router } from 'express';
+
 import{ CreateUserController } from './controllers/user/CreateUserController'
 import { AuthUserController } from './controllers/user/AuthUserController';
 import{ DetailUserController } from './controllers/user/DetailUserController'
 
 import{ CreateCategoryController } from './controllers/category/CreateCategoryController'
 import { ListCategoryController } from './controllers/category/ListCategoryController'
-
+import { CreateProductController } from './controllers/product/CreateProductController';
 
 import { isAuthenticated } from './middleware/isAuthenticated';
 
@@ -18,9 +19,14 @@ router.post('/session', new AuthUserController().handle)
 
 router.get('/me',isAuthenticated, new DetailUserController().handle)
 
-//-- Rotas categoria
+//-- Rotas de categoria
 
 router.post('/category', isAuthenticated, new CreateCategoryController().handle)
+router.get('/category', isAuthenticated, new  ListCategoryController().handle)
 
-router.get('/category', isAuthenticated, new  ListCategoryController().hanle)
+
+//-- Rotas de produtos
+router.post('/product',isAuthenticated, new CreateProductController().handle)
+
+
 export { router };
