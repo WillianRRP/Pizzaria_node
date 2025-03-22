@@ -8,7 +8,7 @@ class CreateProductController{
         let banner = ''
 
         const createProductService = new CreateProductService()
-        const product = createProductService.execute({
+        const product = await createProductService.execute({
             name,
             price,
             description,
