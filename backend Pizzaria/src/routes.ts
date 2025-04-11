@@ -18,7 +18,7 @@ import { RemoveOrderController } from './controllers/orders/RemoveOrderControlle
 import { SendOrderController } from './controllers/orders/SendOrderController';
 import { ListOrdersController } from './controllers/orders/ListOrdersController';
 import { DetailOrderController } from './controllers/orders/DetailOrderController';
-
+import { FinishOrderController } from './controllers/orders/FinishOrderController';
 import { AddItemController } from './controllers/orders/AddItemController';
 import { RemoveItemController } from './controllers/orders/RemoveItemController';
 
@@ -56,5 +56,6 @@ router.get('/order/detail', isAuthenticated, new DetailOrderController().handle 
 router.post('/order/add', isAuthenticated, new AddItemController().handle )
 router.delete('/order/remove', isAuthenticated, new RemoveItemController().handle )
 router.put('/order/send', isAuthenticated, new SendOrderController().handle )
+router.put('/order/finish', isAuthenticated, new FinishOrderController().handle )
 
 export { router };
